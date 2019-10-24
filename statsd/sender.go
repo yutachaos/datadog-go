@@ -111,6 +111,6 @@ func (s *sender) flush() {
 func (s *sender) close() error {
 	s.flush()
 	err := s.transport.Close()
-	close(s.stop)
+	defer close(s.stop)
 	return err
 }
